@@ -1,0 +1,9 @@
+package com.example.ds_android;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+
+public interface OpenWeatherService {
+    @GET("forcast?q=France&appid=e075a0b59517e88cc46940bb262add13&units=metric ")
+    Call<Forecast> getForcast();
+}
