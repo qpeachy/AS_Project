@@ -1,2 +1,3 @@
-package com.example.ds_android;public class Weather {
+package com.example.ds_android;
+public class Weather {
 }
