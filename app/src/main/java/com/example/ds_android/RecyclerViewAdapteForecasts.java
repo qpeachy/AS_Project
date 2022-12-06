@@ -32,7 +32,7 @@ public class RecyclerViewAdapteForecasts extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        holder.tvDate.setText(dateModelList.get(position).getDatetime());
+        holder.tvDate.setText(String.valueOf(dateModelList.get(position).getDatetime()));
         holder.tvTemps.setText(String.valueOf(dateModelList.get(position).getMain().getTemp()));
 
     }

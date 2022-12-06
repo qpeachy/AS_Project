@@ -3,6 +3,8 @@ package com.example.ds_android.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class Forecast  implements Serializable {
@@ -30,8 +32,10 @@ public class Forecast  implements Serializable {
         return main;
     }
 
-    public int getDatetime() {
-        return datetime;
+    public Date getDatetime() {
+        Instant instant = Instant.ofEpochSecond(datetime);
+        Date date = (Date) Date.from(instant);
+        return date;
     }
 
     public double getCloudiness() {
