@@ -1,4 +1,4 @@
-package com.example.ds_android;
+package com.example.ds_android.Instance;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

@@ -1,4 +1,4 @@
-package com.example.ds_android;
+package com.example.ds_android.Model;
 
 
 import com.google.gson.annotations.SerializedName;

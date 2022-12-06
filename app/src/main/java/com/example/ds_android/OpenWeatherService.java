@@ -1,5 +1,7 @@
 package com.example.ds_android;
 
+import com.example.ds_android.Model.Forecast;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 
