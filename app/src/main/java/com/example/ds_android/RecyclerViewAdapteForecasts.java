@@ -8,15 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ds_android.Model.Forecast;
 import com.example.ds_android.Model.Ingredients;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterIngredients extends RecyclerView.Adapter<RecyclerViewAdapterIngredients.RecyclerViewHolder> {
+public class RecyclerViewAdapteForecasts extends RecyclerView.Adapter<RecyclerViewAdapteForecasts.RecyclerViewHolder> {
 
-    private ArrayList<Ingredients> dateModelList;
+    private ArrayList<Forecast> dateModelList;
 
-    public RecyclerViewAdapterIngredients(ArrayList<Ingredients> dateModelList) {
+    public RecyclerViewAdapteForecasts(ArrayList<Forecast> dateModelList) {
         this.dateModelList = dateModelList;
     }
 
@@ -31,8 +32,8 @@ public class RecyclerViewAdapterIngredients extends RecyclerView.Adapter<Recycle
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        holder.tvNom.setText(dateModelList.get(position).getNom());
-        holder.tvIndice.setText(dateModelList.get(position).getIndice());
+        holder.tvDate.setText(String.valueOf(dateModelList.get(position).getDatetime()));
+        holder.tvTemps.setText(String.valueOf(dateModelList.get(position).getMain().getTemp()));
 
     }
 
@@ -46,13 +47,13 @@ public class RecyclerViewAdapterIngredients extends RecyclerView.Adapter<Recycle
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNom;
-        TextView tvIndice;
+        TextView tvDate;
+        TextView tvTemps;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tvNom = tvNom;
-            this.tvIndice = tvIndice;
+            this.tvDate = tvDate;
+            this.tvTemps = tvTemps;
         }
     }
 }
