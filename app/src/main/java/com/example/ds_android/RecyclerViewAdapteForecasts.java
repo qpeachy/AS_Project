@@ -25,7 +25,7 @@ public class RecyclerViewAdapteForecasts extends RecyclerView.Adapter<RecyclerVi
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         RecyclerViewHolder viewHolder;
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ingredient_recyclerview_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.forecast_recyclerview_list_item, parent, false);
         viewHolder = new RecyclerViewHolder(view);
         return viewHolder;
     }
@@ -33,8 +33,7 @@ public class RecyclerViewAdapteForecasts extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         holder.tvDate.setText(String.valueOf(dateModelList.get(position).getDatetime()));
-        holder.tvTemps.setText(String.valueOf(dateModelList.get(position).getMain().getTemp()));
-
+        holder.tvTemps.setText(String.valueOf(dateModelList.get(position).getMain().getTemp()) + "°C");
     }
 
     public long getItemId(int position){
@@ -52,8 +51,8 @@ public class RecyclerViewAdapteForecasts extends RecyclerView.Adapter<RecyclerVi
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tvDate = tvDate;
-            this.tvTemps = tvTemps;
+            this.tvDate = itemView.findViewById(R.id.tvDt);
+            this.tvTemps = itemView.findViewById(R.id.tvTemps);
         }
     }
 }

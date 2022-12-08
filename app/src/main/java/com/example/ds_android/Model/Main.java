@@ -3,9 +3,9 @@ package com.example.ds_android.Model;
 import com.google.gson.annotations.SerializedName;
 
 public class Main {
-    @SerializedName("temp")
+   @SerializedName("temp")
     private double temp;
-    @SerializedName("temp_min")
+   @SerializedName("temp_min")
     private double tempMin;
     @SerializedName("temp_max")
     private double tempMax;

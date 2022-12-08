@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.ds_android.Instance.RetrofitClientInstance;
@@ -26,7 +25,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private List<Forecast> dataForecast;
     private RecyclerViewAdapteForecasts adapter;
     private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -47,21 +45,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.ListForecast.setHasFixedSize(true);
-        LinearLayoutManager LayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        binding .ListForecast.setLayoutManager(LayoutManager);
-        binding.ListForecast.setFocusable(false);
 
-        OpenWeatherService service =
-                RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherService. class);
+        OpenWeatherServices service =
+                RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices. class);
         Call<Forecast> call = service.getForecast();
         call.enqueue(new Callback<Forecast>() {
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast> response) {
                 Forecast forecasts = response.body();
-                dataForecast = new ArrayList<>();
-                dataForecast = (List<Forecast>) forecasts;
-                adapter = new RecyclerViewAdapteForecasts((ArrayList<Forecast>) dataForecast);
+                binding.ListForecast.setHasFixedSize(true);
+                LinearLayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                binding .ListForecast.setLayoutManager(LayoutManager);
+                binding.ListForecast.setFocusable(false);
+
+                adapter = new RecyclerViewAdapteForecasts(forecasts.getLesForecasts());
                 binding.ListForecast.setAdapter(adapter);
             }
             @Override

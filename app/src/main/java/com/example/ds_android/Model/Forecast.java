@@ -3,29 +3,29 @@ package com.example.ds_android.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.text.DateFormat;
+import java.util.Date;
 import java.time.Instant;
 import java.util.ArrayList;
 
 public class Forecast  implements Serializable {
+    @SerializedName("cnt")
+    private int cnt;
+
     @SerializedName("main")
-    Main main;
+    private Main main;
     @SerializedName("weather")
-    ArrayList<Weather> weathers;
+    private ArrayList<Weather> weathers;
 
     @SerializedName("dt")
     private int datetime;
 
-    @SerializedName("clouds")
-    private double cloudiness;
-
-    @SerializedName("list")
+   @SerializedName("list")
     private ArrayList<Forecast> lesForecasts;
 
-    public Forecast(Main main, int datetime, double cloudiness) {
+    public Forecast(Main main, int datetime) {
         this.main = main;
         this.datetime = datetime;
-        this.cloudiness = cloudiness;
     }
 
     public Main getMain() {
@@ -33,13 +33,11 @@ public class Forecast  implements Serializable {
     }
 
     public Date getDatetime() {
-        Instant instant = Instant.ofEpochSecond(datetime);
-        Date date = (Date) Date.from(instant);
+//        Instant instant = Instant.ofEpochSecond(datetime);
+//        Date date = (Date) Date.from(instant);
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(dt));
+        date.setText(currentDateTimeString);
         return date;
-    }
-
-    public double getCloudiness() {
-        return cloudiness;
     }
 
     public ArrayList<Weather> getWeathers() {
@@ -47,6 +45,12 @@ public class Forecast  implements Serializable {
     }
 
     public ArrayList<Forecast> getLesForecasts() {
-        return lesForecasts;
+        ArrayList<Forecast> lesForecastsMidi = new ArrayList<Forecast>();
+        for (Forecast unForcast : lesForecasts){
+            if (lesForecastsMidi.contains(unForcast)){
+                lesForecastsMidi.add(unForcast);
+            }
+        }
+        return lesForecastsMidi;
     }
 }
