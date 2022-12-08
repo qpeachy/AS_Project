@@ -3,7 +3,6 @@ package com.example.ds_android.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.util.Date;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -33,10 +32,8 @@ public class Forecast  implements Serializable {
     }
 
     public Date getDatetime() {
-//        Instant instant = Instant.ofEpochSecond(datetime);
-//        Date date = (Date) Date.from(instant);
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(dt));
-        date.setText(currentDateTimeString);
+        Instant instant = Instant.ofEpochSecond(datetime);
+        Date date = Date.from(instant);
         return date;
     }
 
@@ -46,10 +43,8 @@ public class Forecast  implements Serializable {
 
     public ArrayList<Forecast> getLesForecasts() {
         ArrayList<Forecast> lesForecastsMidi = new ArrayList<Forecast>();
-        for (Forecast unForcast : lesForecasts){
-            if (lesForecastsMidi.contains(unForcast)){
-                lesForecastsMidi.add(unForcast);
-            }
+        for (int i = 1; i < lesForecasts.size(); i+=8) {
+         lesForecastsMidi.add(lesForecasts.get(i));
         }
         return lesForecastsMidi;
     }
