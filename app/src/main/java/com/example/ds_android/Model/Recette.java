@@ -2,9 +2,10 @@ package com.example.ds_android.Model;
 
 import com.example.ds_android.Model.Ingredients;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recette {
+public class Recette implements Serializable {
     private ArrayList<Ingredients> LesIngredients;
     private String nom;
 

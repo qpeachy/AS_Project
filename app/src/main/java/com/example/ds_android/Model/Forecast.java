@@ -13,6 +13,7 @@ public class Forecast  implements Serializable {
 
     @SerializedName("main")
     private Main main;
+
     @SerializedName("weather")
     private ArrayList<Weather> weathers;
 

@@ -2,7 +2,9 @@ package com.example.ds_android.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Weather {
+import java.io.Serializable;
+
+public class Weather implements Serializable {
 
     @SerializedName("description")
     private String description;

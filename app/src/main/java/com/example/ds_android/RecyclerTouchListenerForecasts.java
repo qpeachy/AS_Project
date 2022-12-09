@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerTouchListenerForecasts implements RecyclerView.OnItemTouchListener{
 
     private GestureDetector gestureDetector;
-    private RecyclerViewClickListenerIngredients clickListener;
+    private RecyclerViewClickListenerForecasts clickListener;
 
-    public RecyclerTouchListenerForecasts(Context context, RecyclerView recyclerView, GestureDetector gestureDetector, RecyclerViewClickListenerIngredients clickListener) {
-        this.clickListener = (RecyclerViewClickListenerIngredients) clickListener;
+    public RecyclerTouchListenerForecasts(Context context, RecyclerView recyclerView, RecyclerViewClickListenerForecasts clickListener) {
+        this.clickListener = (RecyclerViewClickListenerForecasts) clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
             @Override
             public boolean onSingleTapUp(MotionEvent e) {

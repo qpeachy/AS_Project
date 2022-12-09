@@ -1,9 +1,10 @@
 package com.example.ds_android.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PlatDuJour {
+public class PlatDuJour implements Serializable {
     private ArrayList<Chaud> RecettesChaudes;
     private ArrayList<Froid> RecettesFroides;
     private ArrayList<Snack> RecettesSnacks;

@@ -1,5 +1,8 @@
 package com.example.ds_android.Model;
-public class Ingredients {
+
+import java.io.Serializable;
+
+public class Ingredients implements Serializable {
     private String nom;
     private String indice;
 

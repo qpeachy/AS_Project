@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.ds_android.Instance.RetrofitClientInstance;
@@ -26,18 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private RecyclerViewAdapteForecasts adapter;
-    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-        @Override
-        public void onActivityResult(ActivityResult result) {
-            if(result.getResultCode()==1){
-                Intent resultIntent = result.getData();
-                if(resultIntent != null){
-                    Forecast nForecast = (Forecast) resultIntent.getSerializableExtra("Forecast");
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        }
-    });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 binding .ListForecast.setLayoutManager(LayoutManager);
                 binding.ListForecast.setFocusable(false);
-
                 adapter = new RecyclerViewAdapteForecasts(forecasts.getLesForecasts());
                 binding.ListForecast.setAdapter(adapter);
+                binding.ListForecast.addOnItemTouchListener(new RecyclerTouchListenerForecasts(getApplicationContext(), binding.ListForecast, new RecyclerViewClickListenerForecasts() {
+                    @Override
+                    public void onClick(View view, int position) {
+                       Intent intent = new Intent(getApplicationContext(), ForecastActivity.class);
+                       intent.putExtra("Forecast", forecasts.getLesForecasts().get(position));
+                        startActivity(intent);
+                    }
+                }));
             }
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {  Toast.makeText(MainActivity.this, "Une erreur est survenue !",  Toast.LENGTH_SHORT).show();
