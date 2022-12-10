@@ -9,10 +9,10 @@ public class PlatDuJour implements Serializable {
     private ArrayList<Froid> RecettesFroides;
     private ArrayList<Snack> RecettesSnacks;
 
-    public PlatDuJour(ArrayList<Chaud> recettesChaudes, ArrayList<Froid> recettesFroides, ArrayList<Snack> recettesSnacks) {
-        RecettesChaudes = recettesChaudes;
-        RecettesFroides = recettesFroides;
-        RecettesSnacks = recettesSnacks;
+    public PlatDuJour() {
+        RecettesChaudes = new ArrayList<>();
+        RecettesFroides = new ArrayList<>();
+        RecettesSnacks = new ArrayList<>();
     }
 
     public ArrayList<Chaud> getRecettesChaudes() {
@@ -34,7 +34,7 @@ public class PlatDuJour implements Serializable {
         return randRecette;
     }
 
-    public Object RecettesduJours(Forecast unForcast){
+    public Object RecetteDuJours(Forecast unForcast){
 
         ArrayList lesRecettes = new ArrayList<>();
         if(unForcast.getMain().getTemp() < 12.00){
