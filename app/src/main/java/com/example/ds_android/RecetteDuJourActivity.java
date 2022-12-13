@@ -9,6 +9,6 @@ public class RecetteDuJourActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recette_du_jour);
+        setContentView(R.layout.activity_recette);
     }
 }
