@@ -19,9 +19,6 @@
             android:name=".RecetteActivity"
             android:exported="false" />
         <activity
-            android:name=".RecetteDuJourActivity"
-            android:exported="false" />
-        <activity
             android:name=".ForecastActivity"
             android:exported="false" />
         <activity
