@@ -94,23 +94,26 @@
         android:id="@+id/tvRecette"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="552dp"
+        android:textAlignment="center"
         android:text="Text getExplicationRecette"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSunset"
+        app:layout_constraintVertical_bias="0.22" />
 
-    <ImageButton
-        android:id="@+id/IbRecette"
-        android:layout_width="60dp"
+    <Button
+        android:id="@+id/btnRecette"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="544dp"
+        android:layout_marginEnd="176dp"
         android:backgroundTint="@android:color/black"
-        app:layout_constraintStart_toEndOf="@+id/tvRecette"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="?attr/actionModePasteDrawable" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecette"
+        app:layout_constraintVertical_bias="0.144"
+        android:text="Recette" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

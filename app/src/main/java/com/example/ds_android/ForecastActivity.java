@@ -12,6 +12,7 @@ import com.example.ds_android.databinding.ActivityForecastBinding;
 public class ForecastActivity extends AppCompatActivity {
 
     private ActivityForecastBinding binding;
+    private Forecast leForecast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,9 @@ public class ForecastActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        Intent intent = getIntent();
-        Forecast leForecast = (Forecast)intent.getSerializableExtra("Forecast");
+        Intent fIntent = getIntent();
+        leForecast = (Forecast)fIntent.getSerializableExtra("Forecast");
+
         binding.tvDescription.setText(leForecast.getWeathers().get(0).getDescription());
         binding.tvMain.setText(leForecast.getWeathers().get(0).getMain());
         binding.tvHumidity.setText(String.valueOf(leForecast.getMain().getHumidity()));
@@ -34,11 +36,12 @@ public class ForecastActivity extends AppCompatActivity {
         binding.tvSunset.setText(leForecast.getSunset());
         binding.tvRecette.setText(leForecast.getDaysComment());
 
-        binding.IbRecette.setOnClickListener(new View.OnClickListener() {
+        binding.btnRecette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rIntent = new Intent();
-                rIntent.putExtra("Forecast", leForecast);
+                Intent rIntent = new Intent(getApplicationContext(), RecetteActivity.class);
+                rIntent.putExtra("Recette", leForecast.getPlatDuJour());
+                startActivity(rIntent);
             }
         });
     }
