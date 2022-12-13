@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ds_android.Model.Forecast;
-import com.example.ds_android.Model.Ingredients;
 
 import java.util.ArrayList;
 

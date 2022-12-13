@@ -25,12 +25,14 @@ public class RecetteActivity extends AppCompatActivity {
 
         Intent intent = new Intent();
         Forecast leForecast = (Forecast) intent.getSerializableExtra("Forecast");
-        lePlatDuJour = new PlatDuJour();
 
         binding.ListIngredients.setHasFixedSize(true);
         LinearLayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         binding.ListIngredients.setLayoutManager(LayoutManager);
         binding.ListIngredients.setFocusable(false);
-        //adapter = new RecyclerViewAdapterIngredients();
+        adapter = new RecyclerViewAdapterIngredients(leForecast.getPlatDuJour().getLesIngredients());
+        binding.ListIngredients.setAdapter(adapter);
+        binding.tvNom.setText(leForecast.getPlatDuJour().getNom());
+        binding.tvInstructions.setText(leForecast.getPlatDuJour().getInstructions());
     }
 }

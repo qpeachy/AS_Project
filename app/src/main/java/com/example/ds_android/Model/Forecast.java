@@ -28,6 +28,8 @@ public class Forecast  implements Serializable {
     @SerializedName("sunset")
     private int sunset;
 
+    private PlatDuJour platDuJour;
+
 
     public Forecast(Main main, ArrayList<Weather> weathers, int datetime, int sunshine, int sunset) {
         this.main = main;
@@ -81,5 +83,17 @@ public class Forecast  implements Serializable {
         if(getMain().getTemp() > 20)
             sentence = "Ouf! Une recette froide pour réduire la température!";
         return sentence;
+    }
+
+    public Recette getPlatDuJour() {
+        ArrayList list = new ArrayList<>();
+        if(getMain().getTemp() < 12)
+            list = platDuJour.getTypeRecettes("Froide");
+        if(getMain().getTemp() > 20)
+            list = platDuJour.getTypeRecettes("Chaude");
+        else
+            list = platDuJour.getTypeRecettes("Snack");
+        int position = platDuJour.randRecette(list);
+        return (Recette) list.get(position);
     }
 }
