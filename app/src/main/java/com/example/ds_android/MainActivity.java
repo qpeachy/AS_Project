@@ -43,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast> response) {
                 Forecast forecasts = response.body();
+
                 binding.ListForecast.setHasFixedSize(true);
                 LinearLayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 binding .ListForecast.setLayoutManager(LayoutManager);
                 binding.ListForecast.setFocusable(false);
                 adapter = new RecyclerViewAdapteForecasts(forecasts.getLesForecasts());
                 binding.ListForecast.setAdapter(adapter);
+
                 binding.ListForecast.addOnItemTouchListener(new RecyclerTouchListenerForecasts(getApplicationContext(), binding.ListForecast, new RecyclerViewClickListenerForecasts() {
                     @Override
                     public void onClick(View view, int position) {

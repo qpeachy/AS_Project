@@ -28,18 +28,20 @@ public class ForecastActivity extends AppCompatActivity {
 
         binding.tvDescription.setText(leForecast.getWeathers().get(0).getDescription());
         binding.tvMain.setText(leForecast.getWeathers().get(0).getMain());
-        binding.tvHumidity.setText(String.valueOf(leForecast.getMain().getHumidity()));
-        binding.tvTemps.setText(String.valueOf(leForecast.getMain().getTemp()));
-        binding.tvTempsMax.setText(String.valueOf(leForecast.getMain().getTempMax()));
-        binding.tvTempsMin.setText(String.valueOf(leForecast.getMain().getTempMin()));
-        binding.tvSunrise.setText(leForecast.getSunrise());
-        binding.tvSunset.setText(leForecast.getSunset());
+        binding.tvHumidity.setText("Humidité : " + String.valueOf(leForecast.getMain().getHumidity())+"%");
+        binding.tvTemps.setText("Température : " + String.valueOf(leForecast.getMain().getTemp())+ "°C");
+        binding.tvTempsMax.setText("Température max : " + String.valueOf(leForecast.getMain().getTempMax())+ "°C");
+        binding.tvTempsMin.setText("Température min : " + String.valueOf(leForecast.getMain().getTempMin())+ "°C");
+        binding.tvSunrise.setText("levé du soleil : " + leForecast.getSunrise());
+        binding.tvSunset.setText("couché du soleil : " + leForecast.getSunset());
+        binding.tvRessentie.setText("Ressentie : " + String.valueOf(leForecast.getMain().getFeelsLike())+ "°C");
         binding.tvRecette.setText(leForecast.getDaysComment());
 
         binding.btnRecette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent rIntent = new Intent(getApplicationContext(), RecetteActivity.class);
+                leForecast.CreatePdj();
                 rIntent.putExtra("Recette", leForecast.getPlatDuJour());
                 startActivity(rIntent);
             }

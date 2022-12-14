@@ -30,14 +30,17 @@ public class Forecast  implements Serializable {
 
     private PlatDuJour platDuJour;
 
-
-    public Forecast(Main main, ArrayList<Weather> weathers, int datetime, int sunshine, int sunset) {
+    public Forecast(Main main, ArrayList<Weather> weathers, int datetime, ArrayList<Forecast> lesForecasts, int sunrise, int sunset) {
         this.main = main;
         this.weathers = weathers;
         this.datetime = datetime;
         this.lesForecasts = lesForecasts;
-        this.sunrise = sunshine;
+        this.sunrise = sunrise;
         this.sunset = sunset;
+    }
+
+    public void CreatePdj(){
+        this.platDuJour = new PlatDuJour();
     }
 
     public Main getMain() {
@@ -64,14 +67,14 @@ public class Forecast  implements Serializable {
 
     public String getSunrise() {
         Date dateSunsrise = new Date(sunrise *1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss");
         String result = sdf.format(dateSunsrise);
         return result;
     }
 
     public String getSunset() {
         Date dateSunset = new Date(sunset *1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss");
         String result = sdf.format(dateSunset);
         return result;
     }
@@ -86,13 +89,17 @@ public class Forecast  implements Serializable {
     }
 
     public Recette getPlatDuJour() {
-        ArrayList list = new ArrayList<>();
-        if(getMain().getTemp() < 12)
+
+        ArrayList list = new ArrayList<Recette>();
+        if(getMain().getTemp() <= 10.00) {
             list = platDuJour.getTypeRecettes("Froide");
-        if(getMain().getTemp() > 20)
+        }
+        else if(getMain().getTemp() >= 20.00) {
             list = platDuJour.getTypeRecettes("Chaude");
-        else
+        }
+        else {
             list = platDuJour.getTypeRecettes("Snack");
+        }
         int position = platDuJour.randRecette(list);
         return (Recette) list.get(position);
     }

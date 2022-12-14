@@ -51,8 +51,8 @@ public class RecyclerViewAdapterIngredients extends RecyclerView.Adapter<Recycle
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tvNom = tvNom;
-            this.tvIndice = tvIndice;
+            this.tvNom = itemView.findViewById(R.id.tvNom);
+            this.tvIndice = itemView.findViewById(R.id.tvIndice);
         }
     }
 }

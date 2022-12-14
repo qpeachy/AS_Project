@@ -3,6 +3,7 @@ package com.example.ds_android;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,18 +27,21 @@ public class RecetteActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        Intent rIntent = getIntent();
+        laRecette = (Recette)rIntent.getSerializableExtra("Recette");
+
         binding.ListIngredients.setHasFixedSize(true);
         LinearLayoutManager LayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         binding.ListIngredients.setLayoutManager(LayoutManager);
         binding.ListIngredients.setFocusable(false);
-
-        Intent rIntent = getIntent();
-        laRecette = (Recette)rIntent.getSerializableExtra("Recette");
-
         adapter = new RecyclerViewAdapterIngredients(laRecette.getLesIngredients());
         binding.ListIngredients.setAdapter(adapter);
 
         binding.tvNom.setText(laRecette.getNom());
-        binding.tvInstructions.setText(laRecette.getInstructions());
+
+        TextView tv = new TextView(this);
+        tv.setText(laRecette.getInstructions());
+        binding.svInstructions.addView(tv);
+        //binding.svInstructions.setM
     }
 }

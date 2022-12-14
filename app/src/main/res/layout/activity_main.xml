@@ -8,14 +8,13 @@
     tools:context=".MainActivity">
 
 
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
+    <Button
         android:id="@+id/imageFilterButton"
         android:layout_width="58dp"
         android:layout_height="38dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/material_dynamic_neutral10"
-        android:src="?android:attr/actionModeWebSearchDrawable"
         android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,12 +34,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListForecast"
-        android:layout_width="156dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="52dp"
+        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:scrollbars="vertical"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

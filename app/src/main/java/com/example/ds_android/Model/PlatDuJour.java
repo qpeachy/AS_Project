@@ -9,6 +9,7 @@ public class PlatDuJour implements Serializable {
 
     public PlatDuJour() {
     this.recettes = new ArrayList<>();
+    setRecettes();
     }
 
     public int randRecette(ArrayList recettes){
@@ -23,9 +24,9 @@ public class PlatDuJour implements Serializable {
     }
 
     public ArrayList<Recette> getTypeRecettes(String categorie){
-        ArrayList list = new ArrayList();
+        ArrayList list = new ArrayList<Recette>();
         for(Recette uneRecette : recettes){
-            if(recettes.contains(categorie))
+            if(uneRecette.getCategorie().getNom().equals(categorie))
                 list.add(uneRecette);
         }
         return  list;
@@ -38,9 +39,14 @@ public class PlatDuJour implements Serializable {
         Ingredient un3 = new Ingredient("tomate", "2");
         Ingredient un4 = new Ingredient("beurre", "500g");
         Ingredient un5 = new Ingredient("nnlnkm", "500g");
-        ArrayList Ing = new ArrayList();Ing.add(un); Ing.add(un1); Ing.add(un);Ing.add(un2);Ing.add(un);
-        ArrayList Ing2 = new ArrayList(); Ing.add(un); Ing.add(un1); Ing.add(un2);Ing.add(un2);Ing.add(un4);
-        ArrayList Ing3 = new ArrayList(); Ing.add(un4); Ing.add(un5); Ing.add(un2);Ing.add(un3);Ing.add(un4);
+        ArrayList Ing = new ArrayList<Ingredient>();
+        Ing.add(un); Ing.add(un1); Ing.add(un);Ing.add(un2);Ing.add(un);
+
+        ArrayList Ing2 = new ArrayList<Ingredient>();
+        Ing2.add(un); Ing2.add(un1); Ing2.add(un2);Ing2.add(un2);Ing2.add(un4);
+
+        ArrayList Ing3 = new ArrayList<Ingredient>();
+        Ing3.add(un4); Ing3.add(un5); Ing3.add(un2);Ing3.add(un3);Ing3.add(un4);
         recettes.add(new Recette(Ing, "Gaspacho", "Ideoque fertur neminem aliquando ob haec vel similia poenae addictum oblato de more elogio revocari iussisse, quod inexorabiles quoque principes factitarunt. et exitiale hoc vitium, quod in aliis non numquam intepescit, in illo aetatis progressu effervescebat, obstinatum eius propositum accendente adulatorum cohorte.\n" +
                 "\n" +
                 "Et quoniam apud eos ut in capite mundi morborum acerbitates celsius dominantur, ad quos vel sedandos omnis professio medendi torpescit, excogitatum est adminiculum sospitale nequi amicum perferentem similia videat, additumque est cautionibus paucis remedium aliud satis validum, ut famulos percontatum missos quem ad modum valeant noti hac aegritudine colligati, non ante recipiant domum quam lavacro purgaverint corpus. ita etiam alienis oculis visa metuitur labes.", new CategorieRecette("Froide")));
