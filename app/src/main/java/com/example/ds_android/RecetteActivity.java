@@ -2,6 +2,7 @@ package com.example.ds_android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,10 +39,7 @@ public class RecetteActivity extends AppCompatActivity {
         binding.ListIngredients.setAdapter(adapter);
 
         binding.tvNom.setText(laRecette.getNom());
-
-        TextView tv = new TextView(this);
-        tv.setText(laRecette.getInstructions());
-        binding.svInstructions.addView(tv);
-        //binding.svInstructions.setM
+        binding.tvInstructions.setText(laRecette.getInstructions());
+        binding.tvInstructions.setMovementMethod(new ScrollingMovementMethod());
     }
 }

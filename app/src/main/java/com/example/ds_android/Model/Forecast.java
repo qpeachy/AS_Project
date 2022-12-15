@@ -92,10 +92,10 @@ public class Forecast  implements Serializable {
 
         ArrayList list = new ArrayList<Recette>();
         if(getMain().getTemp() <= 10.00) {
-            list = platDuJour.getTypeRecettes("Froide");
+            list = platDuJour.getTypeRecettes("Chaude");
         }
         else if(getMain().getTemp() >= 20.00) {
-            list = platDuJour.getTypeRecettes("Chaude");
+            list = platDuJour.getTypeRecettes("Froide");
         }
         else {
             list = platDuJour.getTypeRecettes("Snack");

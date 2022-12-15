@@ -52,15 +52,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListIngredients" />
 
-    <ScrollView
-        android:id="@+id/svInstructions"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="332dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        android:scrollbarSize="50dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar"
         android:text="..."
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:scrollbars="vertical"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
